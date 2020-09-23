@@ -1,0 +1,181 @@
+---
+title: "Análisis de la producción y exportación del cacao en el Norte de Santander, colombiano entre 2007 y 2016"
+author: Gonzales Jose, Cavez Stewar, Cadillo Alejo
+date: 23/09/2020
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## **Resumen**
+
+El presente articulo tiene como objetivo principal analizar económicamente el sector cacaotero en Norte de Santander, Colombia y a nivel internacional. El método es deductivo con estudio descriptivo. Se consultaron fuentes documentales de organismos estatales, principalmente de Página Principal Ministerio de Agricultura y Desarrollo Rural. En cuanto a resultados y conclusiones se tiene que, en Norte de Santander, así como en Colombia, se requiere aumentar la producción de cacao y su tecnificación en el cultivo para aprovechar la alta demanda internacional de cacao y sus derivados, así como los buenos precios para ampliar su participación internacional, tomando la ventaja diferencial del cacao fino y de aroma. Lo anterior debe ir acompañado de la generación de valor agregado, competitividad, aprovechamiento de los tratados comerciales vigentes en Colombia y la proyección del cacao como cultivo clave del postconflicto colombiano.
+
+ 
+## **Palabras clave:** cacao, Norte de Santander, internacionalización, análisis económico.
+
+## **Introducción**
+El cacao es el fruto clave para la industria del chocolate, así como para otras industrias de alimentos y belleza. Este fruto ha venido presentando una dinámica particular debido al aumento considerable de la demanda, frente a una oferta que se había visto limitada por afectaciones de los cultivos y falta de renovación y tecnificación. Además, se ha aumentado el interés de muchos mercados por el cacao fino y de aroma para transformarlos y ofrecer líneas de chocolate y otros productos gourmet y de lujo, aunque a nivel mundial, según la ICCO solo se produce 5% de este tipo. Así mismo, el cacao tradicional ha venido en aumento debido a que la industria requiere mayores cantidades de transformación para suplir las demandas de consumo en mercados ya establecidos, pero principalmente en mercados emergentes, donde la clase media ha logrado incrementar sus ingresos. Lo anterior ha generado un incremento en los precios del cacao a nivel internacional, por lo que se visualiza una oportunidad para los cacaocultores colombianos y en particular de Norte de Santander, para aumentar la producción y en lo posible con mayor tecnificación; esto debido a que se cuenta con la posibilidad de ampliar las áreas cultivables, la mano de obra, las condiciones climáticas, la variedad genética y la ventaja de contar con cacao fino y de aroma. Es por eso que se busca promover la transformación del cacao en grano en Colombia y generar mayor valor agregado para impulsar la competitividad (Porter, 1985), y una mayor participación de Colombia en los mercados internacionales del cacao y sus derivados, haciendo uso en lo posible de las ventajas de los tratados de libre comercio vigentes en Colombia
+Aumentar la producción de cacao en Colombia conllevaría a un impacto social positivo para los cultivadores y, en un escenario de postconflicto, este fruto sería uno de los más indicados para reemplazar los cultivos ilícitos, así como una buena fuente de ingreso para los cultivadores; esto debido al buen precio nacional e internacional que actualmente se registra. El objetivo de este documento es analizar económicamente el sector cacaotero en Norte de Santander, Colombia y a nivel internacional. Los resultados permiten la caracterización de la situación actual del sector cacaotero, sus determinantes desde la oferta y la demanda y ciertos lineamientos a tener en cuenta ante el potencial de crecimiento del cacao en el país.
+
+## **PAÍSES PRODUCTORES Y EXPORTADORES DE CACAO**
+
+Los principales países productores de cacao en el mundo se localizan principalmente en África, América, Asia y Oceanía como se muestra en la siguiente tabla:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+
+#exportaciones de cacao en el mundo
+
+exporta_cacao=read.csv2("C:/Users/Usuario/Desktop/R/informe.github.io.git/exporta_cacao.csv")
+View(exporta_cacao)
+
+ggplot(data=exporta_cacao, aes(x= DATOS, y=PAISES))+
+  geom_col(width = 0.7, fill= "red",color= "blue")+
+  ggtitle("Exportaciones de cacao en el mundo ")+
+  xlab("Datos(miles de dolares)")
+
+orden_desc = exporta_cacao %>%
+  arrange(desc(DATOS))
+
+# ver los datos de colombia
+
+exporta_cacao[17,]
+
+```
+de este grafico se puede inferir
+
+
+## **Oferta y demanda en el mercado internacional**
+
+Los principales países productores de cacao en el mundo se localizan principalmente en África, América, Asia y Oceanía como se muestra en la siguiente tabla:
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+#porcentaje de exportaciones por pais
+
+exporta_cacao$porcentaje = (exporta_cacao$DATOS/sum(exporta_cacao$DATOS))*100
+
+
+#importaciones de cacao en el mundo 
+
+importa_cacao=read.csv2("C:/Users/Usuario/Desktop/R/informe.github.io.git/importa_cacao.csv")
+View(exporta_cacao)
+
+ggplot(data=importa_cacao, aes(x= DATOS, y=PAISES))+
+  geom_col(width = 0.7, fill= "green",color= "orange")+
+  ggtitle("Importaciones de cacao en el mundo ")+
+  xlab("Datos(miles de dolares)")
+
+#porcentaje de importaciones por pais
+
+importa_cacao$porcentaje = (importa_cacao$DATOS/sum(importa_cacao$DATOS))*100
+importa_cacao[7,]
+```
+
+## **Materiales y métodos** ##
+Los materiales con los que se realizó el presente informe fue el programa de r studio con paquetes como: raster, rgadal. Stringr, sf, tidyverse, ggplot2 entre otros. Además de eso usamos el sistema de control de versiones git.
+La investigación es de enfoque cuantitativo. El método empleado es deductivo con estudio de tipo descriptivo; deductivo porque se parte de hechos generales y relevantes del sector cacaotero como la producción, los rendimientos, los precios, la molienda, las transacciones internacionales y la transformación en Norte de Santander, Colombia y a nivel internacional, con el fin de llegar a unas concepciones específicas que describan la situación del sector. El estudio también es de tipo descriptivo, ya que se basa en la caracterización e interpretación de la información y estadísticas sobre el cacao y su cadena de producción y comercialización, los mercados de comercialización, las tendencias y situación actual en el entorno regional, nacional e internacional; es de campo porque se vieron fuentes primarias para conocer sus puntos de vista sobre el cacao y su entorno económico
+
+**Localización del área de estudio**
+
+Colombia. La República de Colombia está situada en el Noroccidente de América del Sur. Limita al norte con el mar Caribe, al sur con Perú y Ecuador, al oriente con Venezuela y Brasil y al occidente con Panamá y el océano Pacífico.
+ Extensión.Con una extensión de 1.141.748 km², es el cuarto país de América del Sur por su tamaño. Está atravesada, de norte a sur, por la gran cordillera de los Andes que se divide en tres ramas: Occidental, Oriental y Central (con seis picos de más de 5.000 metros), y que divide al territorio colombiano en dos grandes regiones, una montañosa y otra de llanos. Clima.Esta geografía permite que en el país se presenten diversidad de climas y regiones que van desde selvas húmedas y llanuras tropicales hasta páramos y nieves perpetuas.
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# Librerias
+require(pacman)
+pacman::p_load(raster, rgdal, rgeos, stringr, sf, tidyverse, RColorBrewer, cowplot, ggpubr, 
+               ggspatial, rnaturalearth, rnaturalearthdata)
+
+
+#cargamos la data
+
+cacao_shp <- shapefile('./cacao/shp/cacao_prd.shp')
+prod_cacao <- read_csv('./cacao/tbl/data_crop.csv') %>% 
+  mutate(NOMBRE_DPT = iconv(NOMBRE_DPT, to = 'latin1'),
+         NOMBRE_DPT = str_to_sentence(NOMBRE_DPT))
+Departamentos_col <- st_read('./cacao/shp/dptos_col.shp') %>% 
+  mutate(NOMBRE_DPT = str_to_sentence(NOMBRE_DPT)) %>% 
+  inner_join(., prod_cacao, by = c('NOMBRE_DPT' = 'NOMBRE_DPT'))
+
+coordenadas <- as_tibble(cbind(as.data.frame(st_coordinates(st_centroid(Departamentos_col))), dpto = Departamentos_col$NOMBRE_DPT)) 
+wrl <- ne_countries(scale = "medium", returnclass = "sf")
+
+# BBOX --------------------------------------------------------------------
+colombia_bb = st_as_sfc(st_bbox(Departamentos_col))
+extension <- wrl %>% 
+  filter(region_wb == 'Latin America & Caribbean') %>% 
+  as(., 'Spatial') %>% 
+  extent() 
+
+# Extraer archipielago San Andres y Providencia
+dp1 <- Departamentos_col %>% filter(NOMBRE_DPT != 'Archipiélago de san andrés, providencia y santa catalina')
+cr1 <- coordenadas %>% filter(dpto != 'Archipiélago de san andrés, providencia y santa catalina')
+
+dp2 <- Departamentos_col %>% filter(NOMBRE_DPT == 'Archipiélago de san andrés, providencia y santa catalina')
+cr1 <- coordenadas %>% filter(dpto != 'Archipiélago de san andrés, providencia y santa catalina')
+
+# creación de mapas
+
+mapa1 <- ggplot() +
+  geom_sf(data = wrl, fill = "white") +
+  geom_sf(data = colombia_bb, fill = NA, color = 'red2', size = 1.2) +
+  ggtitle(label = 'Macrolocalización') +
+  theme_classic() + 
+  coord_sf(xlim = extension[1:2], ylim = extension[3:4]) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        plot.title = element_text(hjust = 0.5, size = 7, face = "bold")) 
+
+mapa2 <- ggplot() +
+  geom_sf(data = wrl, fill = 'white') +
+  geom_sf(data = dp1, aes(fill = crp)) +
+  ggtitle(label = 'Área sembrada de Cacao por departamento en Colombia') +
+  scale_fill_gradientn(name = 'Área sembrada (ha)', 
+                       colours = RColorBrewer::brewer.pal(n = 8, name = 'Oranges'), 
+                       na.value = 'white') +
+  # scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
+  annotation_scale(location = "br", width_hint = 0.5) +
+  annotation_north_arrow(location = "br", which_north = "true", 
+                         pad_x = unit(0.1, "in"), pad_y = unit(0.2, "in"), # 0.2 # 0.3
+                         style = north_arrow_fancy_orienteering) +
+  coord_sf(xlim = extent(Departamentos_col)[1:2], ylim = extent(Departamentos_col)[3:4]) +
+  geom_text(data= cr1, aes(x = X, y = Y, label = dpto),
+            color = "darkblue", fontface = "bold", check_overlap = FALSE, size = 3.3) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, size = 18, face = "bold"),
+        panel.grid.major = element_blank(),
+        # legend.key.width = unit(5, 'line'),
+        panel.grid.minor = element_blank(),
+        legend.justification = c(0,0),
+        legend.position = c(0.005, 0.005),
+        legend.key.size = unit(0.9, "cm"),
+        legend.background = element_rect(fill = alpha('white', 1), colour = alpha('white', 0.4))) +
+  labs(x = 'Longitud',
+       y = 'Latitud',
+       caption = "Fuente: Min. de Agricultura\n y desarrollor rural (2017)") +
+  annotate(geom = 'text', x = -68, y = -3, label = 'Autor: Jose A. \nGonzales', 
+           fontface = 'italic', color = 'grey22', size = 4) 
+
+mapa3 <- ggplot() +
+  geom_sf(data = dp2, fill = "white") +
+  ggtitle(label = 'San Andres y Providencia') +
+  theme_bw() + 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        legend.position = 'none',
+        plot.title = element_text(hjust = 0.5, size = 7, face = "bold")) 
+
+gg_inset <- ggdraw() +
+  draw_plot(mapa2) +
+  draw_plot(mapa1, x = 0.72, y = 0.76, width = 0.28, height = 0.19) +
+  draw_plot(mapa3, x = 0.03, y = 0.77, width = 0.25, height = 0.17)
+
+
+```
